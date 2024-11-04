@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="titulo">Lista de Tarefas</h1>
+    <table id="tabela-tarefas">
+        <thead>
+            <tr>
+                <th>Ordem</th>
+                <th>ID<br><span class="info"><i class="fas fa-info-circle"></i><span class="infotext">Esta coluna é destinada para identificadores únicos de cada tarefa, permitindo uma referência fácil e precisa.</span></span></th>
+                <th>Nome<br><span class="info"><i class="fas fa-info-circle"></i><span class="infotext">Esta coluna é destinada para os títulos ou as descrições breves de cada tarefa.</span></span></th>
+                <th>Custo (R$)<br><span class="info"><i class="fas fa-info-circle"></i><span class="infotext">Esta coluna se refere aos recursos financeiros necessários para a realização de cada tarefa.</span></span></th>
+                <th>Data Limite<br><span class="info"><i class="fas fa-info-circle"></i><span class="infotext">Esta coluna indica o prazo final para a conclusão de cada tarefa.</span></span></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- As tarefas serão inseridas aqui -->
+        </tbody>
+    </table>
+    <div>
+        <button id="incluir" class="btn" onclick="modalAdicionar()"><b>Incluir Registros</b></button>
+    </div>
+    <!-- PopUp para o adicionar tarefa  -->
+    <div id="modalAdicionar" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar" onclick="fecharModal('modalAdicionar')">&times;</span>
+            <h2>Adicionar Nova Tarefa:</h2><br>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+            <label for="custo">Custo:</label>
+            <input type="text" id="custo" required>
+            <label for="dataLimite">Data Limite:</label>
+            <input type="date" id="dataLimite" required>
+            <button class="btn" id="adicionarBtn" onclick="adicionarTarefa()"><b>Adicionar</b></button>
+        </div>
+    </div>
+
+    <!-- PopUp para o editar tarefa  -->
+    <div id="modalEditar" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar" onclick="fecharModal('modalEditar')">&times;</span>
+            <h2>Editar Tarefa:</h2><br>
+            <label for="nomeEditar">Nome:</label>
+            <input type="text" id="nomeEditar" required>
+            <label for="custoEditar">Custo:</label>
+            <input type="text" id="custoEditar" required>
+            <label for="dataLimiteEditar">Data Limite:</label>
+            <input type="date" id="dataLimiteEditar" required>
+            <button class="btn" id="atualizarBtn" onclick="editarRegistro()"><b>Atualizar</b></button>
+        </div>
+    </div>
+
+    <!-- PopUp para o excluir tarefa  -->
+    <div id="modalExcluir" class="modal">
+        <div class="modalConteudo">
+            <span class="fechar" onclick="fecharModal('modalExcluir')">&times;</span>
+            <h2>Excluir Tarefa:</h2>
+            <p>Você tem certeza de que deseja excluir essa tarefa?</p>
+            <div class="btn-container">
+                <button class="btnVoltar" onclick="excluirTarefa()"><b>Sim</b></button>
+                <button class="btnExcluir" onclick="fecharModal('modalExcluir')"><b>Não</b></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="server.js"></script>
+</body>
+</html>
